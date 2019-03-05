@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: $author$
-  description: $role-description$
+  description: $role_description$
   company:
   issue_tracker_url:
   license: MIT

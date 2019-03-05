@@ -1,24 +1,19 @@
 language: scala
-sudo: false
-jdk: oraclejdk8
-env:
-  matrix:
-    # Test with the defaults
-    - SCRIPT="sbt new file://$(pwd) --name=hello && cd hello && sbt test"
-    # Test with custom name/organization to ensure templating is done correctly
-    - SCRIPT="sbt new file://$(pwd) --name=smello --organization=org.eggsample && cd smello && sbt test"
-script: eval $SCRIPT
+
+# These directories are cached to S3 at the end of the build
 cache:
   directories:
     - $HOME/.ivy2/cache
-    - $HOME/.sbt/boot/scala*
-before_cache:
-  # Delete all ivydata files since ivy touches them on each build
-  - find $HOME/.ivy2/cache -name "ivydata-*.properties" | xargs rm
-notifications:
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/2aa0aeda88d31fe293d4
-    on_success: change
-    on_failure: always
-    on_start: never
+    - $HOME/.sbt/boot/
+    - $HOME/.sbt/launchers
+
+jdk:
+  - oraclejdk8
+
+script:
+  ## This runs the template with the default parameters, and runs test within the templated app.
+  - sbt -Dfile.encoding=UTF8 -J-XX:ReservedCodeCacheSize=256M test
+
+  # Tricks to avoid unnecessary cache updates
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm

@@ -9,16 +9,7 @@ Giter8 template for an Ansible role.
 sbt new rdwinter2/ansible.g8
 ```
 
-## License
+Template license
+Written in 2016-2018 by Lightbend, Inc.
 
-MIT
-
-## Author Information
-
-| Author                | E-mail               |
-|-----------------------|----------------------|
-| Robert D. Winter, 2nd |  rdwinter2@gmail.com |
-
-## References
-
-*
+To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this template to the public domain worldwide. This template is distributed without any warranty. See http://creativecommons.org/publicdomain/zero/1.0/.

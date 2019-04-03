@@ -1,7 +1,6 @@
-#!/usr/bin/env bas
-cd /opt/ansible
+#!/usr/bin/env bash
+cd /opt/ansible && \
 . /opt/ansible/hacking/env-setup -q
-cd $OLDPWD
 
 PATH=/opt/ansible/bin:$PATH
 
